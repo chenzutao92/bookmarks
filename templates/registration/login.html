@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+Log-in
+{% endblock %}
+{% block content %}
+    <h1>登录</h1>
+    {% if form.errors %}
+        <p>
+            您的用户名和密码不匹配
+            请再试一次。
+        </p>
+    {% else %}
+        <p>
+            请使用以下表单登录,如果你没有账户<a href="{% url "register" %}">在这里注册</a>
+        </p>
+    {% endif %}
+    <div class="login-form">
+        <form action="{% url 'login' %}" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p><input type="submit" value="Log-in"></p>
+        </form>
+        <p><a href="{% url "password_reset" %}">忘记了你的密码？</a></p>
+    </div>
+{% endblock %}
