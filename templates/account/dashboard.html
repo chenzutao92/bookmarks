@@ -5,6 +5,13 @@ Dashboard
 
 {% block content %}
     <h1>Dashboard</h1>
+
+    {% with total_images_created=request.user.images_created.count %}
+        <p>欢迎来到您的仪表板. 您已添加书签 {{ total_images_created }} 图片{{ total_images_created|pluralize }}.</p>
+    {% endwith %}
+
+    <p>将以下按钮拖动到您的书签工具栏以收藏来自其他网站的图像 → <a href="javascript:{% include "bookmarklet_launcher.js" %}" class="button">Bookmark it!</a><p>
+
     <p>Welcome to your dashboard.
     您可以<a href="{% url "edit" %}">编辑您的个人资料</a>
     或者 <a href="{% url "password_change" %}">修改密码</a>
