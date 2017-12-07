@@ -22,7 +22,7 @@ class Contact(models.Model):
         ordering = ('-created',)
 
     def __str__(self):
-        return '{}follows {}'.format(self.user_from,self.user_to)
+        return '{}follows {}'.format(self.user_from, self.user_to)
 
 
 # 动态添加以下字段给用户
